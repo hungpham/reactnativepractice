@@ -8,29 +8,10 @@ import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
-  Text,
-  TextInput,
-  View,
-  Image
+  Image,
+  View
 } from 'react-native';
 
-import CircleImageView from 'components/Circle';
-import Signin from 'containers/Signin';
+import Root from 'src/root';
 
-export default class Practice1 extends Component {
-  render() {
-    return (
-      <Signin styles={styles.container} />
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: null,
-    height: null
-  }
-});
-
-AppRegistry.registerComponent('Practice1', () => Practice1);
+AppRegistry.registerComponent('Practice1', () => Root);
