@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1488365038394" clover="3.2.0">
+  <project timestamp="1488365038395" name="All files">
+    <metrics statements="73" coveredstatements="21" conditionals="25" coveredconditionals="5" methods="26" coveredmethods="5" elements="124" coveredelements="31" complexity="0" loc="73" ncloc="73" packages="7" files="9" classes="9">
+      <package name="jest">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <file name="setup.js" path="/Users/hung.phamtan/Documents/sources/ReactNative/react-native-practice1/jest/setup.js">
+          <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="1" count="3" type="stmt"/>
+          <line num="2" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.components.CircleImageView">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <file name="CircleImageView.js" path="/Users/hung.phamtan/Documents/sources/ReactNative/react-native-practice1/src/components/CircleImageView/CircleImageView.js">
+          <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="13" count="1" type="stmt"/>
+          <line num="24" count="2" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.components.CustomTextInput">
+        <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <file name="CustomTextInput.js" path="/Users/hung.phamtan/Documents/sources/ReactNative/react-native-practice1/src/components/CustomTextInput/CustomTextInput.js">
+          <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+          <line num="18" count="2" type="stmt"/>
+          <line num="36" count="2" type="stmt"/>
+          <line num="40" count="2" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.config">
+        <metrics statements="4" coveredstatements="4" conditionals="6" coveredconditionals="3" methods="0" coveredmethods="0"/>
+        <file name="applicationStyle.js" path="/Users/hung.phamtan/Documents/sources/ReactNative/react-native-practice1/src/config/applicationStyle.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="8" count="2" type="stmt"/>
+        </file>
+        <file name="colors.js" path="/Users/hung.phamtan/Documents/sources/ReactNative/react-native-practice1/src/config/colors.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="2" type="stmt"/>
+        </file>
+        <file name="metrics.js" path="/Users/hung.phamtan/Documents/sources/ReactNative/react-native-practice1/src/config/metrics.js">
+          <metrics statements="2" coveredstatements="2" conditionals="6" coveredconditionals="3" methods="0" coveredmethods="0"/>
+          <line num="6" count="2" type="stmt"/>
+          <line num="8" count="2" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.containers">
+        <metrics statements="20" coveredstatements="5" conditionals="4" coveredconditionals="0" methods="10" coveredmethods="2"/>
+        <file name="SignIn.js" path="/Users/hung.phamtan/Documents/sources/ReactNative/react-native-practice1/src/containers/SignIn.js">
+          <metrics statements="20" coveredstatements="5" conditionals="4" coveredconditionals="0" methods="10" coveredmethods="2"/>
+          <line num="30" count="0" type="stmt"/>
+          <line num="31" count="0" type="stmt"/>
+          <line num="36" count="0" type="stmt"/>
+          <line num="37" count="0" type="stmt"/>
+          <line num="41" count="0" type="stmt"/>
+          <line num="48" count="0" type="stmt"/>
+          <line num="52" count="0" type="stmt"/>
+          <line num="53" count="0" type="stmt"/>
+          <line num="60" count="0" type="stmt"/>
+          <line num="70" count="0" type="stmt"/>
+          <line num="71" count="0" type="stmt"/>
+          <line num="73" count="0" type="stmt"/>
+          <line num="85" count="0" type="stmt"/>
+          <line num="90" count="0" type="stmt"/>
+          <line num="119" count="1" type="stmt"/>
+          <line num="128" count="1" type="stmt"/>
+          <line num="137" count="1" type="stmt"/>
+          <line num="138" count="0" type="stmt"/>
+          <line num="141" count="1" type="stmt"/>
+          <line num="147" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.network">
+        <metrics statements="23" coveredstatements="1" conditionals="8" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <file name="AuthenticationService.js" path="/Users/hung.phamtan/Documents/sources/ReactNative/react-native-practice1/src/network/AuthenticationService.js">
+          <metrics statements="23" coveredstatements="1" conditionals="8" coveredconditionals="0" methods="5" coveredmethods="0"/>
+          <line num="1" count="1" type="stmt"/>
+          <line num="6" count="0" type="stmt"/>
+          <line num="7" count="0" type="stmt"/>
+          <line num="11" count="0" type="stmt"/>
+          <line num="12" count="0" type="stmt"/>
+          <line num="16" count="0" type="stmt"/>
+          <line num="17" count="0" type="stmt"/>
+          <line num="18" count="0" type="stmt"/>
+          <line num="19" count="0" type="stmt"/>
+          <line num="20" count="0" type="stmt"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="25" count="0" type="stmt"/>
+          <line num="29" count="0" type="stmt"/>
+          <line num="30" count="0" type="stmt"/>
+          <line num="32" count="0" type="stmt"/>
+          <line num="33" count="0" type="stmt"/>
+          <line num="35" count="0" type="stmt"/>
+          <line num="36" count="0" type="stmt"/>
+          <line num="38" count="0" type="stmt"/>
+          <line num="39" count="0" type="stmt"/>
+          <line num="42" count="0" type="stmt"/>
+          <line num="43" count="0" type="stmt"/>
+          <line num="45" count="0" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.redux">
+        <metrics statements="19" coveredstatements="4" conditionals="5" coveredconditionals="0" methods="8" coveredmethods="0"/>
+        <file name="signin.js" path="/Users/hung.phamtan/Documents/sources/ReactNative/react-native-practice1/src/redux/signin.js">
+          <metrics statements="19" coveredstatements="4" conditionals="5" coveredconditionals="0" methods="8" coveredmethods="0"/>
+          <line num="6" count="1" type="stmt"/>
+          <line num="7" count="1" type="stmt"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="14" count="0" type="stmt"/>
+          <line num="20" count="0" type="stmt"/>
+          <line num="27" count="0" type="stmt"/>
+          <line num="36" count="1" type="stmt"/>
+          <line num="42" count="0" type="stmt"/>
+          <line num="44" count="0" type="stmt"/>
+          <line num="50" count="0" type="stmt"/>
+          <line num="57" count="0" type="stmt"/>
+          <line num="58" count="0" type="stmt"/>
+          <line num="64" count="0" type="stmt"/>
+          <line num="72" count="0" type="stmt"/>
+          <line num="73" count="0" type="stmt"/>
+          <line num="74" count="0" type="stmt"/>
+          <line num="76" count="0" type="stmt"/>
+          <line num="79" count="0" type="stmt"/>
+          <line num="80" count="0" type="stmt"/>
+        </file>
+      </package>
+    </metrics>
+  </project>
+</coverage>
