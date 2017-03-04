@@ -20,6 +20,8 @@ import {
 import { Provider } from 'react-redux';
 import store from 'config/store';
 
+import Home from 'view/home';
+import Landing from 'view/landing';
 import SignIn from 'containers/SignIn';
 import SignUp from 'containers/SignUp';
 import routes, { listRoutes } from 'config/routes';
@@ -28,10 +30,24 @@ import applicationStyles from 'config/applicationStyle';
 const scenes = Actions.create(
   <Scene key="root">
     <Scene
+      key="Landing"
+      component={Landing}
+      title="Home"
+      initial={true}
+      hideNavBar={true}
+      type={ActionConst.PUSH}
+    />
+    <Scene
+      key="Home"
+      component={Home}
+      title="Home"
+      hideNavBar={true}
+      type={ActionConst.PUSH}
+    />
+    <Scene
       key="SignIn"
       component={SignIn}
-      initial={true}
-      hideNavBar={true} />
+      hideNavBar={false} />
     <Scene
       key="SignUp"
       component={SignUp}

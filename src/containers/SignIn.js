@@ -34,7 +34,7 @@ export class SignIn extends Component {
     };
 
     this.handleSignIn = this.handleSignIn.bind(this);
-    this.handleSignUp = this.handleSignUp.bind(this);
+    this.gotoSignUp = this.gotoSignUp.bind(this);
   }
 
   handleSignIn() {
@@ -44,73 +44,74 @@ export class SignIn extends Component {
     });
   }
 
-  handleSignUp() {
+  gotoSignUp() {
     Actions.SignUp();
   }
 
   checkToRenderLoading() {
-    if(this.props.loading) {
+    if (this.props.loading) {
       return (
         <ActivityIndicator
           style={[styles.loader]}
           color='white'
           size='large' />
-        );
+      );
     }
     return (
       <TouchableOpacity activeOpacity={.5} onPress={this.handleSignIn}>
-      <View style={styles.signinButton}>
-        <Text style={styles.signinText}>Sign In</Text>
-      </View>
+        <View style={styles.signinButton}>
+          <Text style={styles.signinText}>Sign In</Text>
+        </View>
       </TouchableOpacity>
-      );
+    );
   }
 
   render() {
-    if(this.props.user) {
-      Alert.alert('Login Success', `Welcome ${this.props.user.full_name}`);
+    if (this.props.user) {
+      // Alert.alert('Login Success', `Welcome ${this.props.user.full_name}`);
+      Actions.Home();
     }
     return (
-       <Image
-          style={applicationStyles.splashScreen}
-          source={require('assets/images/bg_signin.png')}>
-          <View style={applicationStyles.halfHeight}>
-            <CircleImageView
-              height={120}
-              imagelink={require('assets/images/check_red.png')}/>
-          </View>
-          <View style={applicationStyles.quarterHeight}>
-            <CustomTextInput
-              autoCapitalize={'none'}
-              onChangeText={(text) => this.setState({username: text})}
-              keyboardType={'email-address'}
-              placeholder={'UserName'}
-              imageIcon={require('assets/images/user_name.png')} />
-            <CustomTextInput
-              onChangeText={(text) => this.setState({password: text})}
-              autoCapitalize={'none'}
-              secureTextEntry={true}
-              placeholder={'Password'}
-              imageIcon={require('assets/images/password.png')} />
-            <TouchableOpacity
-              activeOpacity={.5}>
-                <Text style={styles.forgotPasswordText}>
-                  Forgot Password?
+      <Image
+        style={applicationStyles.splashScreen}
+        source={require('assets/images/bg_signin.png')}>
+        <View style={applicationStyles.halfHeight}>
+          <CircleImageView
+            height={120}
+            imagelink={require('assets/images/task-icon.png')} />
+        </View>
+        <View style={applicationStyles.quarterHeight}>
+          <CustomTextInput
+            autoCapitalize={'none'}
+            onChangeText={(text) => this.setState({ username: text })}
+            keyboardType={'email-address'}
+            placeholder={'Username'}
+            imageIcon={require('assets/images/user_name.png')} />
+          <CustomTextInput
+            onChangeText={(text) => this.setState({ password: text })}
+            autoCapitalize={'none'}
+            secureTextEntry={true}
+            placeholder={'Password'}
+            imageIcon={require('assets/images/password.png')} />
+          <TouchableOpacity
+            activeOpacity={.5}>
+            <Text style={styles.forgotPasswordText}>
+              Forgot Password?
                 </Text>
+          </TouchableOpacity>
+        </View>
+        <View style={[applicationStyles.quarterHeight, { justifyContent: 'flex-end' }]}>
+          <Text style={styles.errorText}>
+            {this.props.error}
+          </Text>
+          {this.checkToRenderLoading()}
+          <View style={styles.signupWrap}>
+            <Text style={styles.accountText}>Don't have an account?</Text>
+            <TouchableOpacity activeOpacity={.5} onPress={this.gotoSignUp}>
+              <Text style={styles.signupLinkText}>Sign Up</Text>
             </TouchableOpacity>
           </View>
-          <View style={[applicationStyles.quarterHeight, {justifyContent: 'flex-end'}]}>
-            <Text style={styles.errorText}>
-              {this.props.error}
-            </Text>
-            {this.checkToRenderLoading()}
-            <View style={styles.signupWrap}>
-              <Text style={styles.accountText}>Don't have an account?</Text>
-              <TouchableOpacity activeOpacity={.5} onPress={this.handleSignUp}>
-                <Text style={styles.signupLinkText}>Sign Up</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
+        </View>
       </Image>
     );
   }
@@ -154,7 +155,7 @@ var styles = StyleSheet.create({
   },
   signinButton: {
     height: 60,
-    backgroundColor: Colors.radicalRed,
+    backgroundColor: Colors.blue,
     alignItems: "center",
     justifyContent: "center"
   },

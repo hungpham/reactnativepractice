@@ -2,8 +2,11 @@
  * # reducers
  * This class combines all the reducers into one
  */
-import { signInReducer } from "redux/signin";
 import { combineReducers } from "redux";
+
+import { signInReducer } from "redux/signin";
+import { signUpReducer } from "redux/signup";
+
 
 const RESET_ERROR_MESSAGE = 'Reset Error Message';
 /**
@@ -24,7 +27,8 @@ function errorMessage(state = null, action) {
 
 const reducers = {
   errorMessage,
-  signInReducer
+  signInReducer,
+  signUpReducer
 }
 
 const rootReducer = combineReducers(reducers)

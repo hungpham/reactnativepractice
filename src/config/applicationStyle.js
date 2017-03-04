@@ -12,12 +12,17 @@ const ApplicationStyles = {
     height: null
   },
   button: {
-    backgroundColor: Colors.buttonBackground,
+    height: 60,
+    backgroundColor: Colors.blue,
     borderColor: Colors.buttonBackground,
-    borderWidth: 1,
+    borderWidth: 0,
+    alignItems: "center",
     alignSelf: 'stretch',
-    justifyContent: 'center',
-    borderRadius: Metrics.buttonRadius
+    justifyContent: 'center'
+  },
+  buttonText: {
+    color: "#FFF",
+    fontSize: 18
   },
   inputField: {
     flex: 1,
@@ -47,6 +52,12 @@ const ApplicationStyles = {
     flex: .5,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  quarterHeightWithLogo: {
+    flex: .25,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 10
   },
   quarterHeight: {
     flex: .25,

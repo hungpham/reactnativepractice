@@ -3,27 +3,27 @@ import AuthenticationService from 'network/AuthenticationService';
 //=============================//
 //      Action Types
 //=============================//
-export const REQUEST = 'SignIn/AAAA_Request';
-export const SUCCESS = 'SignIn/AAAA_Success';
-export const FAILED  = 'SignIn/AAAA_Failed';
+export const REQUEST = 'SignUp/SignUp_Request';
+export const SUCCESS = 'SignUp/SignUp_Success';
+export const FAILED  = 'SignUp/SignUp_Failed';
 
 //=============================//
 //      Action Creators
 //=============================//
-export function loginRequest() {
+export function signupRequest() {
 	return {
 		type: REQUEST
 	};
 }
 
-export function loginRequestSuccess(json) {
+export function signupRequestSuccess(json) {
 	return {
 		type: SUCCESS,
 		payload: json
 	};
 }
 
-export function loginRequestFailed(error) {
+export function signupRequestFailed(error) {
 	return {
 		type: FAILED,
 		error: error.message
@@ -38,8 +38,8 @@ export const INITIAL_STATE = {
 	loading: false
 };
 
-export function signInReducer(state = INITIAL_STATE, action) {
-	console.log('signInReducer action', action)
+export function signUpReducer(state = INITIAL_STATE, action) {
+	console.log('signUpReducer action', action)
   switch (action.type) {
     case REQUEST:
 			return {
@@ -68,16 +68,16 @@ export function signInReducer(state = INITIAL_STATE, action) {
 //=============================//
 //4: Load Data
 //=============================//
-export function login(userCredentials) {
+export function signup(userCredentials) {
   return (dispatch, getState) => {
-    dispatch(loginRequest());
-    return AuthenticationService.signin(userCredentials)
+    // dispatch(signupRequest());
+    return AuthenticationService.signUp(userCredentials)
     .then(json => {
-        dispatch(loginRequestSuccess(json));
+        dispatch(signupRequestSuccess(json));
     })
     .catch(error => {
       console.log('There has been a problem with your fetch operation: ' + error.message);
-      dispatch(loginRequestFailed(error))
+      dispatch(signupRequestFailed(error))
     });
   };
 }

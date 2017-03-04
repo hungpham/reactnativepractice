@@ -26,12 +26,11 @@ const styles = StyleSheet.create({
     width: 90,
     height: 90,
     borderRadius: 90 / 2,
-    backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center'
   },
   icon: {
-    width: 40,
-    height: 40
+    width: 90,
+    height: 90
   }
 });
