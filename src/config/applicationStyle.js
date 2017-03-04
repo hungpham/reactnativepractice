@@ -11,6 +11,14 @@ const ApplicationStyles = {
     width: null,
     height: null
   },
+  mainContent: {
+    flex: 1,
+    padding: 0,
+    alignItems: "center",
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+    flexDirection: 'row',
+  },
   button: {
     height: 60,
     backgroundColor: Colors.blue,

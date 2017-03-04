@@ -34,12 +34,8 @@ export class Home extends Component {
 			<Image
 				style={applicationStyles.splashScreen}
 				source={require('assets/images/bg_home-1.png')}>
-				<View style={applicationStyles.halfHeight}>
-					<CircleImageView
-						height={120}
-						imagelink={require('assets/images/task-icon.png')}
-					/>
-					<TaskList />
+				<View style={applicationStyles.mainContent}>
+					<TaskList style={styles.list} />
 				</View>
 			</Image>
 		);
@@ -53,35 +49,7 @@ Home.propTypes = {
 export default Home;
 
 var styles = StyleSheet.create({
-	welcomeText: {
-		color: Colors.translucentBlack,
-		fontSize: 28,
-		fontWeight: '200',
-		backgroundColor: Colors.transparent,
-    textAlign: 'center',
-    lineHeight: 26,
-		padding: 10
-	},
-	signinButton: {
-    backgroundColor: Colors.blue,
-		marginBottom: 10,
-  },
-	signupButton: {
-    backgroundColor: Colors.lighBlue,
-		marginBottom: 10,
-  },
-	accountintro: {
-		flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center'
-	},
-	accountText: {
-		justifyContent: 'center',
-		color: Colors.lightGrey,
-    backgroundColor: Colors.transparent
-	},
-	copyright: {
-		flex: 0.1,
-		justifyContent: 'flex-end'
+	list: {
+		flex: 1
 	}
 });

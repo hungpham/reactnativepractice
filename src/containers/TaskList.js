@@ -21,7 +21,7 @@ import {
 	Actions
 } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-
+import Colors from 'config/colors';
 import applicationStyles from 'config/applicationStyle';
 import { getList } from 'redux/task';
 
@@ -31,41 +31,36 @@ export class TaskList extends Component {
 	constructor(props) {
 		super(props);
 		var ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-		var sources = this.props.tasks || [
-			{
-				"effort": 300,
-				"description": "create task with uuid 2",
-				"taskId": "0d12d950-008c-11e7-b5eb-b943e1a9025b"
-			},
-			{
-				"effort": 110,
-				"description": "deploy to heroku",
-				"taskId": "941a3460-0092-11e7-a4cb-fb8238df415a"
-			}
-		];
+		var sources = this.props.tasks || [];
 		this.state = {
 			dataSource: ds.cloneWithRows(sources),
 		}
 	}
 
 	componentWillMount() {
-		this.props.getList();
+		this.props.getList().then(() => {
+			this.setState({
+				dataSource: this.state.dataSource.cloneWithRows(this.props.tasks)
+			});
+		});
 	}
 
-	componentDidMount() {
-		// this.setState({
-		// 	dataSource: this.state.dataSource.cloneWithRows(this.props.tasks)
-		// });
+	_genRows(pressData) {
+		var dataBlob = [];
+		for (var ii = 0; ii < 100; ii++) {
+			var pressedText = pressData[ii] ? ' (pressed)' : '';
+			dataBlob.push('Row ' + ii + pressedText);
+		}
+		return dataBlob;
 	}
 
 	_renderRow(rowData, sectionID, rowID) {
-		console.log('rowData', rowData);
 		return (
 			<TouchableHighlight onPress={() => {
 
 			}}>
 				<View>
-					<View style={styles.row}>
+					<View style={styles.item}>
 						<Text>
 							{rowData.description}
 						</Text>
@@ -79,31 +74,33 @@ export class TaskList extends Component {
 	}
 
 	_renderSeparator(sectionID, rowID, adjacentRowHighlighted) {
-    return (
-      <View
-        key={`${sectionID}-${rowID}`}
-        style={{
-          height: adjacentRowHighlighted ? 4 : 1,
-          backgroundColor: adjacentRowHighlighted ? '#3B5998' : '#CCCCCC',
-        }}
-      />
-    );
-  }
+		return (
+			<View
+				key={`${sectionID}-${rowID}`}
+				style={{
+					height: adjacentRowHighlighted ? 4 : 1,
+					backgroundColor: adjacentRowHighlighted ? '#3B5998' : '#CCCCCC',
+				}}
+			/>
+		);
+	}
 
 	render() {
 		return (
-			<Image
-				style={applicationStyles.splashScreen}
-				source={require('assets/images/bg_home.png')}>
-				<View style={[applicationStyles.halfHeight]}>
-					{this.props.tasks && <ListView
-						dataSource={this.state.dataSource}
-						renderRow={this._renderRow}
+			<View style={[styles.container]}>
+				{this.props.tasks && <ListView
+					dataSource={this.state.dataSource}
+					renderRow={this._renderRow}
 					renderSeparator={this._renderSeparator}
-					/>
-					}
-				</View>
-			</Image>
+					enableEmptySections={true}
+				/>
+				}
+				{!this.props.tasks && <ActivityIndicator
+					style={[styles.loader]}
+					color='white'
+					size='large' />
+				}
+			</View>
 		);
 	}
 }
@@ -137,5 +134,17 @@ export default connect(
 )(TaskList);
 
 var styles = StyleSheet.create({
+	container: {
+		marginTop: 60,
+		padding: 20,
+		flex: 1,
+		backgroundColor: Colors.transparentWhite20
+	},
+	items: {
 
+	},
+	item: {
+		marginBottom: 10,
+		padding: 10,
+	}
 });
