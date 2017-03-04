@@ -13,7 +13,7 @@ import loading from 'redux/middleware/loading';
 let store;
  if (__DEV__) {
 	 const enhancer = compose(
-     applyMiddleware(loading, thunk, promiseMiddleware()),
+     applyMiddleware(loading, thunk),
      devTools({
        name: Platform.OS,
        hostname: 'localhost',
@@ -25,7 +25,7 @@ let store;
 	store = createStore(
 	 reducer,
 	 composeWithDevTools(
-		 applyMiddleware(loading, thunk, promiseMiddleware())
+		 applyMiddleware(loading, thunk)
 	 )
 	);
 }

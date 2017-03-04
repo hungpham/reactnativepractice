@@ -31,18 +31,18 @@ export default class AuthenticationService {
 		return fetch(url, myInit)
       .then(response => {
         if(response.ok) {
-          return resolve(response.json());
+          return response.json();
         }
         let errorMessage = 'Network response was not ok.'
-        reject(new Error(errorMessage));
+        throw new Error(errorMessage);
       })
       .then(jsonData => {
         if(jsonData.hasOwnProperty('error')) {
-          reject(new Error(jsonData['error']));
+          throw new Error(jsonData['error']);
         } else {
-          return resolve(jsonData);
+          return jsonData;
         }
-      })
-      .catch(reject(new Error('unknown error')));
+      });
 	}
 }
+0
