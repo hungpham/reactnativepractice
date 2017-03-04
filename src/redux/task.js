@@ -1,29 +1,29 @@
-import AuthenticationService from 'network/AuthenticationService';
+import Task from 'network/Task';
 
 //=============================//
 //      Action Types
 //=============================//
-export const REQUEST = 'SignUp/SignUp_Request';
-export const SUCCESS = 'SignUp/SignUp_Success';
-export const FAILED  = 'SignUp/SignUp_Failed';
+export const REQUEST = 'TASK/Request';
+export const SUCCESS = 'TASK/Success';
+export const FAILED  = 'TASK/Failed';
 
 //=============================//
 //      Action Creators
 //=============================//
-export function signupRequest() {
+export function taskRequest() {
 	return {
 		type: REQUEST
 	};
 }
 
-export function signupRequestSuccess(json) {
+export function taskRequestSuccess(json) {
 	return {
 		type: SUCCESS,
 		payload: json
 	};
 }
 
-export function signupRequestFailed(error) {
+export function taskRequestFailed(error) {
 	return {
 		type: FAILED,
 		error: error.message
@@ -38,7 +38,7 @@ export const INITIAL_STATE = {
 	loading: false
 };
 
-export function signUpReducer(state = INITIAL_STATE, action) {
+export function taskReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case REQUEST:
 			return {
@@ -51,7 +51,7 @@ export function signUpReducer(state = INITIAL_STATE, action) {
 				...state,
 				loading: false,
 				error: '',
-				user: action.payload
+				tasks: action.payload
 			};
 		case FAILED:
 			return {
@@ -67,16 +67,16 @@ export function signUpReducer(state = INITIAL_STATE, action) {
 //=============================//
 //4: Load Data
 //=============================//
-export function signup(userCredentials) {
+export function getList(userCredentials) {
   return (dispatch, getState) => {
-    // dispatch(signupRequest());
-    return AuthenticationService.signUp(userCredentials)
+    dispatch(taskRequest());
+    return Task.getTasks(userCredentials)
     .then(json => {
-        dispatch(signupRequestSuccess(json));
+        dispatch(taskRequestSuccess(json));
     })
     .catch(error => {
       console.log('There has been a problem with your fetch operation: ' + error.message);
-      dispatch(signupRequestFailed(error))
+      dispatch(taskRequestFailed(error))
     });
   };
 }

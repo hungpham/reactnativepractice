@@ -20,6 +20,7 @@ import {
 
 import CircleImageView from 'components/CircleImageView/CircleImageView';
 import CustomTextInput from 'components/CustomTextInput/CustomTextInput';
+import TaskList from 'containers/TaskList';
 import applicationStyles from 'config/applicationStyle';
 import Colors from 'config/colors';
 
@@ -38,7 +39,7 @@ export class Home extends Component {
 						height={120}
 						imagelink={require('assets/images/task-icon.png')}
 					/>
-					<Text style={styles.welcomeText}>Welcome to TaskManager</Text>
+					<TaskList />
 				</View>
 			</Image>
 		);

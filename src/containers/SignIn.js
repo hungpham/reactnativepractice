@@ -127,9 +127,9 @@ SignIn.propTypes = {
 // Map Redux state to component props
 function mapStateToProps(state) {
   return {
-    error: state.signInReducer.error,
-    loading: state.signInReducer.loading,
-    user: state.signInReducer.user
+    error: state.signInState.error,
+    loading: state.signInState.loading,
+    user: state.signInState.user
   }
 }
 

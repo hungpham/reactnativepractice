@@ -1,18 +1,16 @@
-const BASE_URL = 'http://fixiesvn.azurewebsites.net/api/';
+const BASE_URL = 'https://taskmanagerhapi.herokuapp.com/';
 
-export default class AuthenticationService {
+export default class Task {
   //Return an promise
-  static signin(userCredentials) {
-		const url = `${BASE_URL}trainees/login`;
-    return AuthenticationService.postData(url, userCredentials);
+	userCredentials = {
+		username: 'fakeUsername',
+		password: 'fakePassword'
+	}
+  static getTasks(userCredentials) {
+		const url = `${BASE_URL}tasks`;
+    return Task.fetchAPI(url, userCredentials);
   }
-
-  static signup(userInfo) {
-		const url = `${BASE_URL}trainees/register`;
-    return AuthenticationService.postData(url, null, userInfo);
-  }
-
-	static postData(url, headers, body) {
+	static fetchAPI(url, headers, body) {
 		let defaulHeaders = {'Content-Type': 'application/json',
 		'charset': 'utf-8'};
     for (let key in headers) {
@@ -22,7 +20,6 @@ export default class AuthenticationService {
     }
 
 		let myInit = {
-			method: 'POST',
 			headers: defaulHeaders
 		};
     if (body) {

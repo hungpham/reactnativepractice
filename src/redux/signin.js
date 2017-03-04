@@ -39,7 +39,6 @@ export const INITIAL_STATE = {
 };
 
 export function signInReducer(state = INITIAL_STATE, action) {
-	console.log('signInReducer action', action)
   switch (action.type) {
     case REQUEST:
 			return {

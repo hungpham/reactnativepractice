@@ -33,7 +33,7 @@ const scenes = Actions.create(
       key="Landing"
       component={Landing}
       title="Home"
-      initial={true}
+      initial={false}
       hideNavBar={true}
       type={ActionConst.PUSH}
     />
@@ -41,6 +41,7 @@ const scenes = Actions.create(
       key="Home"
       component={Home}
       title="Home"
+      initial={true}
       hideNavBar={true}
       type={ActionConst.PUSH}
     />

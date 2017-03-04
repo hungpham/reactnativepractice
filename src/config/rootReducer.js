@@ -6,6 +6,7 @@ import { combineReducers } from "redux";
 
 import { signInReducer } from "redux/signin";
 import { signUpReducer } from "redux/signup";
+import { taskReducer } from "redux/task";
 
 
 const RESET_ERROR_MESSAGE = 'Reset Error Message';
@@ -26,9 +27,10 @@ function errorMessage(state = null, action) {
 }
 
 const reducers = {
-  errorMessage,
-  signInReducer,
-  signUpReducer
+  errorState: errorMessage,
+  signInState: signInReducer,
+  signUpState: signUpReducer,
+  taskState: taskReducer
 }
 
 const rootReducer = combineReducers(reducers)
