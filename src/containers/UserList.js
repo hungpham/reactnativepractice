@@ -24,24 +24,23 @@ import { connect } from 'react-redux';
 
 import Colors from 'config/colors';
 import applicationStyles from 'config/applicationStyle';
-import { geTasktList } from 'network/API';
+import { getUserList } from 'network/API';
 
-var LOREM_IPSUM = 'Lorem ipsum dolor sit amet, ius ad pertinax oportere accommodare, an vix civibus corrumpit referrentur. Te nam case ludus inciderint, te mea facilisi adipiscing. Sea id integre luptatum. In tota sale consequuntur nec. Erat ocurreret mei ei. Eu paulo sapientem vulputate est, vel an accusam intellegam interesset. Nam eu stet pericula reprimique, ea vim illud modus, putant invidunt reprehendunt ne qui.';
 
-export class TaskList extends Component {
+export class UserList extends Component {
 	constructor(props) {
 		super(props);
 		var ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-		var sources = this.props.tasks || [];
+		var sources = this.props.users || [];
 		this.state = {
 			dataSource: ds.cloneWithRows(sources),
 		}
 	}
 
 	componentWillMount() {
-		this.props.getList().then(() => {
+		this.props.getList(this.props.user.token).then(() => {
 			this.setState({
-				dataSource: this.state.dataSource.cloneWithRows(this.props.tasks)
+				dataSource: this.state.dataSource.cloneWithRows(this.props.users)
 			});
 		});
 	}
@@ -89,14 +88,14 @@ export class TaskList extends Component {
 	render() {
 		return (
 			<View style={[styles.container]}>
-				{this.props.tasks && <ListView
+				{this.props.users && <ListView
 					dataSource={this.state.dataSource}
 					renderRow={this._renderRow}
 					renderSeparator={this._renderSeparator}
 					enableEmptySections={true}
 				/>
 				}
-				{!this.props.tasks && <ActivityIndicator
+				{!this.props.users && <ActivityIndicator
 					style={[styles.loader]}
 					color='white'
 					size='large' />
@@ -106,33 +105,35 @@ export class TaskList extends Component {
 	}
 }
 
-TaskList.propTypes = {
+UserList.propTypes = {
 	getList: PropTypes.func,
 	error: PropTypes.string,
 	loading: PropTypes.bool,
-	tasks: PropTypes.array
+	user: PropTypes.object,
+	users: PropTypes.array
 };
 
 // Map Redux state to component props
 function mapStateToProps(state) {
 	return {
-		error: state.taskState.error,
-		loading: state.taskState.loading,
-		tasks: state.taskState.tasks
+		error: state.userState.error,
+		loading: state.userState.loading,
+		user: state.userState.user,
+		users: state.userState.users
 	}
 }
 
 // Map Redux actions to component props
 function mapDispatchToProps(dispatch) {
 	return {
-		getList: (userCredentials) => dispatch(geTasktList(userCredentials))
+		getList: (token) => dispatch(getUserList(token))
 	}
 }
 
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(TaskList);
+)(UserList);
 
 var styles = StyleSheet.create({
 	container: {

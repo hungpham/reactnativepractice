@@ -16,6 +16,11 @@ export default class SideMenu extends Component {
 		Actions.Home();
 	}
 
+	gotoUser() {
+		this.props.closeDrawer();
+		Actions.User();
+	}
+
 	gotoLogout() {
 		this.props.closeDrawer();
 		Actions.SignIn();
@@ -43,6 +48,13 @@ export default class SideMenu extends Component {
 						}}
 						backgroundColor={Colors.lighBlue}
 						text="Task List"
+					/>
+					<Button
+						onPress={() => {
+							this.gotoUser();
+						}}
+						backgroundColor={Colors.lighBlue}
+						text="User List"
 					/>
 					<View style={styles.seperate} />
 					<Button

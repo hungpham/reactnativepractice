@@ -9,6 +9,10 @@ export const SIGN_UP_REQUEST = 'SIGNUP/REQUESTING';
 export const SIGN_UP_SUCCESS = 'SIGNUP/SUCCESSED';
 export const SIGN_UP_FAILED = 'SIGNUP/FAILED';
 
+export const USER_LIST_REQUEST = 'USER_LIST/REQUESTING';
+export const USER_LIST_SUCCESS = 'USER_LIST/SUCCESSED';
+export const USER_LIST_FAILED = 'USER_LIST/FAILED';
+
 //=============================//
 //      Action Creators
 //=============================//
@@ -53,6 +57,27 @@ export function signUpRequestFailed(error) {
 }
 
 //=============================//
+export function usersRequest() {
+	return {
+		type: USER_LIST_REQUEST
+	};
+}
+
+export function usersRequestSuccess(json) {
+	return {
+		type: USER_LIST_SUCCESS,
+		payload: json
+	};
+}
+
+export function usersRequestFailed(error) {
+	return {
+		type: USER_LIST_FAILED,
+		error: error.message
+	};
+}
+
+//=============================//
 //      Reducer
 //=============================//
 export const INITIAL_STATE = {
@@ -64,6 +89,7 @@ export function userReducer(state = INITIAL_STATE, action) {
 	switch (action.type) {
 		case SIGN_IN_REQUEST:
 		case SIGN_UP_REQUEST:
+		case USER_LIST_REQUEST:
 			return {
 				...state,
 				loading: true,
@@ -71,6 +97,7 @@ export function userReducer(state = INITIAL_STATE, action) {
 			};
 		case SIGN_IN_FAILED:
 		case SIGN_UP_FAILED:
+		case USER_LIST_FAILED:
 			return {
 				...state,
 				loading: false,
@@ -89,6 +116,13 @@ export function userReducer(state = INITIAL_STATE, action) {
 				...state,
 				loading: false,
 				error: ''
+			};
+		case USER_LIST_SUCCESS:
+			return {
+				...state,
+				loading: false,
+				error: '',
+				users: action.payload
 			};
 		default:
 			return state;

@@ -29,8 +29,8 @@ export class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      password: ''
+      username: 'test@gmail.com',
+      password: '123456'
     };
 
     this.handleSignIn = this.handleSignIn.bind(this);
@@ -69,7 +69,7 @@ export class SignIn extends Component {
   render() {
     if (this.props.user) {
       // Alert.alert('Login Success', `Welcome ${this.props.user.full_name}`);
-      Actions.Home();
+      Actions.User();
     }
     return (
       <Image

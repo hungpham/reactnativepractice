@@ -5,13 +5,21 @@ import {
 	loginRequest,
 	loginRequestSuccess,
 	loginRequestFailed,
+
 	signUpRequest,
 	signUpRequestSuccess,
 	signUpRequestFailed,
+
+	usersRequest,
+	usersRequestSuccess,
+	usersRequestFailed
+} from 'redux/user'
+
+import {
 	taskRequest,
 	taskRequestSuccess,
 	taskRequestFailed
-} from 'redux/user'
+} from 'redux/task'
 
 
 //=============================//
@@ -53,10 +61,27 @@ export const login = (userCredentials) => {
 			});
 	};
 }
+
+//=============================//
+// User List handler
+//=============================//
+export const getUserList = (userCredentials) => {
+	return (dispatch) => {
+		dispatch(usersRequest());
+		return AuthenticationService.getTrainees(userCredentials)
+			.then(json => {
+				dispatch(usersRequestSuccess(json));
+			})
+			.catch(error => {
+				console.log('There has been a problem with your fetch operation: ' + error.message);
+				dispatch(usersRequestFailed(error))
+			});
+	};
+}
 //=============================//
 // Task List handler
 //=============================//
-export const getList = (userCredentials) => {
+export const geTasktList = (userCredentials) => {
 	return (dispatch) => {
 		dispatch(taskRequest());
 		return Task.getTasks(userCredentials)

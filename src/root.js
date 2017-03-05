@@ -22,6 +22,7 @@ import store from 'config/store';
 
 import NavigationDrawer from 'navigation/NavigationDrawer';
 import Home from 'view/home';
+import User from 'view/users';
 import Landing from 'view/landing';
 import SignIn from 'containers/SignIn';
 import SignUp from 'containers/SignUp';
@@ -50,7 +51,7 @@ export default class Root extends Component {
                   key="Landing"
                   component={Landing}
                   title="Home"
-                  initial={true}
+                  initial={false}
                   hideNavBar={true}
                   type={ActionConst.PUSH}
                 />
@@ -62,8 +63,16 @@ export default class Root extends Component {
                   type={ActionConst.PUSH}
                 />
                 <Scene
+                  key="User"
+                  component={User}
+                  title="User"
+                  hideNavBar={true}
+                  type={ActionConst.PUSH}
+                />
+                <Scene
                   key="SignIn"
                   component={SignIn}
+                  initial={true}
                   hideNavBar={false} />
                 <Scene
                   key="SignUp"
