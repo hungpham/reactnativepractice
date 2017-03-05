@@ -21,6 +21,7 @@ const ApplicationStyles = {
   },
   button: {
     height: 60,
+    padding: 10,
     backgroundColor: Colors.blue,
     borderColor: Colors.buttonBackground,
     borderWidth: 0,
