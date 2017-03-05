@@ -19,7 +19,7 @@ import {
 } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 
-import { login } from 'redux/signin';
+import { login } from 'network/API';
 import CircleImageView from 'components/CircleImageView/CircleImageView';
 import CustomTextInput from 'components/CustomTextInput/CustomTextInput';
 import applicationStyles from 'config/applicationStyle';
@@ -127,9 +127,9 @@ SignIn.propTypes = {
 // Map Redux state to component props
 function mapStateToProps(state) {
   return {
-    error: state.signInState.error,
-    loading: state.signInState.loading,
-    user: state.signInState.user
+    error: state.userState.error,
+    loading: state.userState.loading,
+    user: state.userState.user
   }
 }
 

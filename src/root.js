@@ -50,7 +50,7 @@ export default class Root extends Component {
                   key="Landing"
                   component={Landing}
                   title="Home"
-                  initial={false}
+                  initial={true}
                   hideNavBar={true}
                   type={ActionConst.PUSH}
                 />
@@ -58,7 +58,6 @@ export default class Root extends Component {
                   key="Home"
                   component={Home}
                   title="Home"
-                  initial={true}
                   hideNavBar={true}
                   type={ActionConst.PUSH}
                 />
@@ -70,6 +69,7 @@ export default class Root extends Component {
                   key="SignUp"
                   component={SignUp}
                   title="Sign Up"
+                  initial={false}
                   hideNavBar={false}
                   type={ActionConst.PUSH}
                 />

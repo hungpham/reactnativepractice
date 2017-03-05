@@ -1,5 +1,3 @@
-import Task from 'network/Task';
-
 //=============================//
 //      Action Types
 //=============================//
@@ -63,20 +61,3 @@ export function taskReducer(state = INITIAL_STATE, action) {
       return state;
   }
 };
-
-//=============================//
-//4: Load Data
-//=============================//
-export function getList(userCredentials) {
-  return (dispatch, getState) => {
-    dispatch(taskRequest());
-    return Task.getTasks(userCredentials)
-    .then(json => {
-        dispatch(taskRequestSuccess(json));
-    })
-    .catch(error => {
-      console.log('There has been a problem with your fetch operation: ' + error.message);
-      dispatch(taskRequestFailed(error))
-    });
-  };
-}

@@ -19,6 +19,7 @@ import {
 } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 
+import { signup } from 'network/API';
 import CircleImageView from 'components/CircleImageView/CircleImageView';
 import CustomTextInput from 'components/CustomTextInput/CustomTextInput';
 import applicationStyles from 'config/applicationStyle';
@@ -28,7 +29,8 @@ export class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
+      fullName: '',
+      email: '',
       password: ''
     };
 
@@ -37,8 +39,9 @@ export class SignUp extends Component {
   }
 
   handleSignUp() {
-    this.props.logout({
-      email: this.state.username,
+    this.props.signup({
+      fullName: this.state.fullName,
+      email: this.state.email,
       password: this.state.password
     });
   }
@@ -78,8 +81,8 @@ export class SignUp extends Component {
         <View style={applicationStyles.halfHeight}>
           <CustomTextInput
             autoCapitalize={'none'}
-            onChangeText={(text) => this.setState({ username: text })}
-            placeholder={'Username'}
+            onChangeText={(text) => this.setState({ fullName: text })}
+            placeholder={'Fullname'}
             imageIcon={require('assets/images/user_name.png')}
           />
           <CustomTextInput
@@ -114,29 +117,24 @@ export class SignUp extends Component {
 }
 
 SignUp.propTypes = {
-  login: PropTypes.func,
+  signup: PropTypes.func,
   error: PropTypes.string,
   loading: PropTypes.bool,
-  user: PropTypes.object
+  newUser: PropTypes.object
 };
 
 // Map Redux state to component props
 function mapStateToProps(state) {
   return {
-    error: state.signUpReducer.error,
-    loading: state.signUpReducer.loading,
-    user: state.signUpReducer.user
+    error: state.userState.error,
+    loading: state.userState.loading
   }
 }
 
 // Map Redux actions to component props
 function mapDispatchToProps(dispatch) {
   return {
-    login: (userCredentials) => {
-      return () => {
-        console.log('userCredentials', userCredentials);
-      }
-    }
+    signup: (newUser) => dispatch(signup(newUser))
   }
 }
 const SignUpConnect = connect(

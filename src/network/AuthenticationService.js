@@ -8,6 +8,7 @@ export default class AuthenticationService {
   }
 
   static signup(userInfo) {
+    console.log("userInfo", userInfo)
 		const url = `${BASE_URL}trainees/register`;
     return AuthenticationService.postData(url, null, userInfo);
   }

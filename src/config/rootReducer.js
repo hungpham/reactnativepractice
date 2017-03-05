@@ -4,8 +4,7 @@
  */
 import { combineReducers } from "redux";
 
-import { signInReducer } from "redux/signin";
-import { signUpReducer } from "redux/signup";
+import { userReducer } from "redux/user";
 import { taskReducer } from "redux/task";
 
 
@@ -28,8 +27,7 @@ function errorMessage(state = null, action) {
 
 const reducers = {
   errorState: errorMessage,
-  signInState: signInReducer,
-  signUpState: signUpReducer,
+  userState: userReducer,
   taskState: taskReducer
 }
 

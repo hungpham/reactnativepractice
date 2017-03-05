@@ -21,9 +21,10 @@ import {
 	Actions
 } from 'react-native-router-flux';
 import { connect } from 'react-redux';
+
 import Colors from 'config/colors';
 import applicationStyles from 'config/applicationStyle';
-import { getList } from 'redux/task';
+import { getList } from 'network/API';
 
 var LOREM_IPSUM = 'Lorem ipsum dolor sit amet, ius ad pertinax oportere accommodare, an vix civibus corrumpit referrentur. Te nam case ludus inciderint, te mea facilisi adipiscing. Sea id integre luptatum. In tota sale consequuntur nec. Erat ocurreret mei ei. Eu paulo sapientem vulputate est, vel an accusam intellegam interesset. Nam eu stet pericula reprimique, ea vim illud modus, putant invidunt reprehendunt ne qui.';
 

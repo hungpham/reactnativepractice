@@ -88,6 +88,6 @@ var styles = StyleSheet.create({
 	},
 	seperate: {
 		height: 1,
-		backgroundColor: "white"
+		backgroundColor: Colors.lightGrey
 	}
 });
