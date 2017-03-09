@@ -13,7 +13,7 @@ export default class CircleImageView extends Component {
     return (
       <View style={[styles.container, {width: this.props.height, height: this.props.height, borderRadius: this.props.height/2}]}>
         <Image
-            style={styles.icon}
+            style={[styles.icon, {width: this.props.height, height: this.props.height}]}
             source={this.props.imagelink}
         />
       </View>

@@ -13,6 +13,8 @@ const Colors = {
   translucentBlack: 'rgba(0, 0, 0, 0.5)',
   transparent: 'rgba(0, 0, 0, 0)',
   transparentWhite20: 'rgba(255, 255, 255, 0.2)',
+  transparentWhite50: 'rgba(255, 255, 255, 0.5)',
+  transparentWhite75: 'rgba(255, 255, 255, 0.75)',
   Alto: '#d7d7d7'
 };
 export default Colors;

@@ -22,6 +22,7 @@ import store from 'config/store';
 
 import NavigationDrawer from 'navigation/NavigationDrawer';
 import Home from 'view/home';
+import TaskDetailView from 'view/taskDetail';
 import User from 'view/users';
 import Landing from 'view/landing';
 import SignIn from 'containers/SignIn';
@@ -50,7 +51,7 @@ export default class Root extends Component {
                 <Scene
                   key="Landing"
                   component={Landing}
-                  title="Home"
+                  title="Landing"
                   initial={false}
                   hideNavBar={true}
                   type={ActionConst.PUSH}
@@ -59,6 +60,14 @@ export default class Root extends Component {
                   key="Home"
                   component={Home}
                   title="Home"
+                  hideNavBar={true}
+                  initial={true}
+                  type={ActionConst.PUSH}
+                />
+                <Scene
+                  key="TaskDetail"
+                  component={TaskDetailView}
+                  title="Task Detail"
                   hideNavBar={true}
                   type={ActionConst.PUSH}
                 />
@@ -72,7 +81,7 @@ export default class Root extends Component {
                 <Scene
                   key="SignIn"
                   component={SignIn}
-                  initial={true}
+                  initial={false}
                   hideNavBar={false} />
                 <Scene
                   key="SignUp"

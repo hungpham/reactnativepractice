@@ -69,7 +69,7 @@ export class SignIn extends Component {
   render() {
     if (this.props.user) {
       // Alert.alert('Login Success', `Welcome ${this.props.user.full_name}`);
-      Actions.User();
+      Actions.Home();
     }
     return (
       <Image

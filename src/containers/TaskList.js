@@ -22,11 +22,10 @@ import {
 } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 
+import CircleImageView from 'components/CircleImageView/CircleImageView';
 import Colors from 'config/colors';
 import applicationStyles from 'config/applicationStyle';
 import { geTasktList } from 'network/API';
-
-var LOREM_IPSUM = 'Lorem ipsum dolor sit amet, ius ad pertinax oportere accommodare, an vix civibus corrumpit referrentur. Te nam case ludus inciderint, te mea facilisi adipiscing. Sea id integre luptatum. In tota sale consequuntur nec. Erat ocurreret mei ei. Eu paulo sapientem vulputate est, vel an accusam intellegam interesset. Nam eu stet pericula reprimique, ea vim illud modus, putant invidunt reprehendunt ne qui.';
 
 export class TaskList extends Component {
 	constructor(props) {
@@ -57,16 +56,26 @@ export class TaskList extends Component {
 
 	_renderRow(rowData, sectionID, rowID) {
 		return (
-			<TouchableHighlight onPress={() => {
-
-			}}>
-				<View>
-					<View style={styles.item}>
-						<Text>
+			<TouchableHighlight
+				onPress={() => {
+					Actions.TaskDetail({task: rowData});
+				}}
+				activeOpacity={0.5}
+				underlayColor={Colors.transparentWhite50}
+			>
+				<View style={styles.item}>
+					<View style={styles.avatar}>
+						<CircleImageView
+							height={64}
+							width={64}
+							imagelink={require('assets/images/avatar.png')} />
+					</View>
+					<View style={styles.itemInfo}>
+						<Text style={styles.description}>
 							{rowData.description}
 						</Text>
-						<Text>
-							{rowData.effort}
+						<Text style={styles.effort}>
+							Effort: ${rowData.effort}
 						</Text>
 					</View>
 				</View>
@@ -80,7 +89,7 @@ export class TaskList extends Component {
 				key={`${sectionID}-${rowID}`}
 				style={{
 					height: adjacentRowHighlighted ? 4 : 1,
-					backgroundColor: adjacentRowHighlighted ? '#3B5998' : '#CCCCCC',
+					backgroundColor: adjacentRowHighlighted ? Colors.lightGrey : Colors.veryLightGrey,
 				}}
 			/>
 		);
@@ -139,13 +148,30 @@ var styles = StyleSheet.create({
 		marginTop: 60,
 		padding: 20,
 		flex: 1,
-		backgroundColor: Colors.transparentWhite20
+		backgroundColor: Colors.transparentWhite75
 	},
 	items: {
 
 	},
 	item: {
+		flex: 1,
+		flexDirection: 'row',
 		marginBottom: 10,
 		padding: 10,
+		alignItems: 'center'
+	},
+	avatar: {
+		flex: 0.3
+	},
+	itemInfo: {
+		flex: 0.7
+	},
+	description: {
+		fontSize: 20
+	},
+	effort: {
+		fontSize: 24,
+		color: Colors.lightGrey,
+		fontStyle: 'italic'
 	}
 });
