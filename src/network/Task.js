@@ -27,16 +27,17 @@ export default class Task {
     }
 		return fetch(url, myInit)
       .then(response => {
-        if(response.ok) {
+        if (response.ok) {
           return response.json();
         }
         let errorMessage = 'Network response was not ok.'
         throw new Error(errorMessage);
       })
       .then(jsonData => {
-        if(jsonData.hasOwnProperty('error')) {
+        if (jsonData.hasOwnProperty('error')) {
           throw new Error(jsonData['error']);
         } else {
+          console.log("jsonData", jsonData);
           return jsonData;
         }
       });

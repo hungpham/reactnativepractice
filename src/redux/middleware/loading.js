@@ -1,10 +1,9 @@
 
 export default (/* { dispatch } */) => next => action => {
 	const { payload } = action;
-	console.log('action payload', payload);
-	console.log('action type', type);
+	// console.log('action payload', payload);
+	// console.log('action type', type);
 	if (!payload || !payload.then) {
-
 		return next(action);
 	}
 	const { type } = action;

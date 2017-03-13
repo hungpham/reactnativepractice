@@ -52,16 +52,15 @@ export default class Root extends Component {
                   key="Landing"
                   component={Landing}
                   title="Landing"
-                  initial={false}
                   hideNavBar={true}
                   type={ActionConst.PUSH}
+                  initial
                 />
                 <Scene
                   key="Home"
                   component={Home}
                   title="Home"
                   hideNavBar={true}
-                  initial={true}
                   type={ActionConst.PUSH}
                 />
                 <Scene
@@ -81,13 +80,12 @@ export default class Root extends Component {
                 <Scene
                   key="SignIn"
                   component={SignIn}
-                  initial={false}
-                  hideNavBar={false} />
+                  hideNavBar={false}
+                />
                 <Scene
                   key="SignUp"
                   component={SignUp}
                   title="Sign Up"
-                  initial={false}
                   hideNavBar={false}
                   type={ActionConst.PUSH}
                 />

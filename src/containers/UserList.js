@@ -22,6 +22,7 @@ import {
 } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 
+import CircleImageView from 'components/CircleImageView/CircleImageView';
 import Colors from 'config/colors';
 import applicationStyles from 'config/applicationStyle';
 import { getUserList } from 'network/API';
@@ -37,7 +38,7 @@ export class UserList extends Component {
 		}
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		this.props.getList(this.props.user.token).then(() => {
 			this.setState({
 				dataSource: this.state.dataSource.cloneWithRows(this.props.users)
@@ -56,16 +57,29 @@ export class UserList extends Component {
 
 	_renderRow(rowData, sectionID, rowID) {
 		return (
-			<TouchableHighlight onPress={() => {
+			<TouchableHighlight
+				onPress={() => {
 
-			}}>
-				<View>
-					<View style={styles.item}>
-						<Text>
-							{rowData.description}
+				}}
+				activeOpacity={0.5}
+				underlayColor={Colors.transparentWhite50}
+			>
+				<View style={styles.item}>
+					<View style={styles.avatar}>
+						<CircleImageView
+							height={64}
+							width={64}
+							imagelink={require('assets/images/avatar.png')} />
+					</View>
+					<View style={styles.itemInfo}>
+						<Text style={styles.description}>
+							{rowData.full_name}
 						</Text>
-						<Text>
-							{rowData.effort}
+						<Text style={styles.email}>
+							{rowData.email}
+						</Text>
+						<Text style={styles.birthday}>
+							{rowData.birthday}
 						</Text>
 					</View>
 				</View>
@@ -79,7 +93,7 @@ export class UserList extends Component {
 				key={`${sectionID}-${rowID}`}
 				style={{
 					height: adjacentRowHighlighted ? 4 : 1,
-					backgroundColor: adjacentRowHighlighted ? '#3B5998' : '#CCCCCC',
+					backgroundColor: adjacentRowHighlighted ? Colors.lightGrey : Colors.veryLightGrey,
 				}}
 			/>
 		);
@@ -140,13 +154,40 @@ var styles = StyleSheet.create({
 		marginTop: 60,
 		padding: 20,
 		flex: 1,
-		backgroundColor: Colors.transparentWhite20
+		backgroundColor: Colors.transparentWhite75
 	},
 	items: {
 
 	},
 	item: {
+		flex: 1,
+		flexDirection: 'row',
 		marginBottom: 10,
 		padding: 10,
+		alignItems: 'center'
+	},
+	avatar: {
+		flex: 0.3
+	},
+	itemInfo: {
+		flex: 0.7
+	},
+	description: {
+		fontSize: 20
+	},
+	effort: {
+		fontSize: 24,
+		color: Colors.lightGrey,
+		fontStyle: 'italic'
+	},
+	email: {
+		fontSize: 14,
+		color: Colors.lightGrey,
+		fontStyle: 'italic'
+	},
+	birthday: {
+		fontSize: 12,
+		color: Colors.lightGrey,
+		fontStyle: 'italic'
 	}
 });

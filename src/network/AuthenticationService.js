@@ -6,11 +6,19 @@ export default class AuthenticationService {
     const url = `${BASE_URL}trainees/login`;
     return AuthenticationService.postData(url, userCredentials, null, 'POST');
   }
+  
+  static signout(token) {
+    const url = `${BASE_URL}trainees/logout`;
+    const headers = {
+      'x-access-token': token
+    }
+    return AuthenticationService.postData(url, headers, null, 'POST');
+  }
 
   static getTrainees(token) {
     const url = `${BASE_URL}trainees/`;
     const headers = {
-      'X-Access-Token': token
+      'x-access-token': token
     }
 
     return AuthenticationService.postData(url, headers, null, 'GET');

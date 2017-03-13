@@ -37,7 +37,7 @@ export class TaskList extends Component {
 		}
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		this.props.getList().then(() => {
 			this.setState({
 				dataSource: this.state.dataSource.cloneWithRows(this.props.tasks)

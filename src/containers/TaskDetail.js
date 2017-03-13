@@ -25,7 +25,6 @@ import { connect } from 'react-redux';
 import CircleImageView from 'components/CircleImageView/CircleImageView';
 import Colors from 'config/colors';
 import applicationStyles from 'config/applicationStyle';
-import { geTasktList } from 'network/API';
 
 export class TaskDetail extends Component {
 	constructor(props) {
@@ -75,21 +74,12 @@ TaskDetail.propTypes = {
 function mapStateToProps(state) {
 	return {
 		error: state.taskState.error,
-		loading: state.taskState.loading,
-		tasks: state.taskState.tasks
-	}
-}
-
-// Map Redux actions to component props
-function mapDispatchToProps(dispatch) {
-	return {
-		getList: (userCredentials) => dispatch(geTasktList(userCredentials))
+		loading: state.taskState.loading
 	}
 }
 
 const connectTaskDetail = connect(
-	mapStateToProps,
-	mapDispatchToProps
+	mapStateToProps
 )(TaskDetail);
 
 export default TaskDetail;

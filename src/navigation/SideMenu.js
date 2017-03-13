@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import {
 	Actions
 } from 'react-native-router-flux';
+import { connect } from 'react-redux';
 
+import { logout } from 'network/API';
 import Button from 'components/Button/Button';
 import Colors from 'config/colors';
-export default class SideMenu extends Component {
+export class SideMenuComponent extends Component {
 	constructor() {
 		super();
 	}
@@ -22,9 +24,13 @@ export default class SideMenu extends Component {
 	}
 
 	gotoLogout() {
+		this.props.logout(this.props.user.token).then(() => {
+
+		});
 		this.props.closeDrawer();
 		Actions.SignIn();
 	}
+
 	render() {
 		return (
 			<View style={styles.container}>
@@ -49,13 +55,16 @@ export default class SideMenu extends Component {
 						backgroundColor={Colors.lighBlue}
 						text="Task List"
 					/>
-					<Button
+					{/*
+						<Button
 						onPress={() => {
 							this.gotoUser();
 						}}
 						backgroundColor={Colors.lighBlue}
 						text="User List"
 					/>
+				*/}
+
 					<View style={styles.seperate} />
 					<Button
 						onPress={() => {
@@ -70,6 +79,29 @@ export default class SideMenu extends Component {
 	}
 }
 
+SideMenuComponent.propTypes = {
+	logout: PropTypes.func,
+	user: PropTypes.object
+};
+// Map Redux state to component props
+function mapStateToProps(state) {
+	return {
+		user: state.userState.user
+	}
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		logout: (token) => dispatch(logout(token))
+	}
+}
+
+const SideMenu = connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(SideMenuComponent);
+
+export default SideMenu;
 
 var styles = StyleSheet.create({
 	container: {

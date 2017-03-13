@@ -35,6 +35,7 @@ export class SignIn extends Component {
 
     this.handleSignIn = this.handleSignIn.bind(this);
     this.gotoSignUp = this.gotoSignUp.bind(this);
+    this.gotoHome = this.gotoHome.bind(this);
   }
 
   handleSignIn() {
@@ -46,6 +47,10 @@ export class SignIn extends Component {
 
   gotoSignUp() {
     Actions.SignUp();
+  }
+
+  gotoHome() {
+    Actions.Home();
   }
 
   checkToRenderLoading() {
@@ -68,7 +73,6 @@ export class SignIn extends Component {
 
   render() {
     if (this.props.user) {
-      // Alert.alert('Login Success', `Welcome ${this.props.user.full_name}`);
       Actions.Home();
     }
     return (

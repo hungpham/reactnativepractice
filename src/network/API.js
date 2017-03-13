@@ -6,6 +6,10 @@ import {
 	loginRequestSuccess,
 	loginRequestFailed,
 
+	logoutRequest,
+	logoutRequestSuccess,
+	logoutRequestFailed,
+
 	signUpRequest,
 	signUpRequestSuccess,
 	signUpRequestFailed,
@@ -58,6 +62,23 @@ export const login = (userCredentials) => {
 			.catch(error => {
 				console.log('There has been a problem with your fetch operation: ' + error.message);
 				dispatch(loginRequestFailed(error))
+			});
+	};
+}
+
+//=============================//
+// SignIn handler
+//=============================//
+export const logout = (userCredentials) => {
+	return (dispatch) => {
+		dispatch(logoutRequest());
+		return AuthenticationService.signout(userCredentials)
+			.then(json => {
+				dispatch(logoutRequestSuccess(json));
+			})
+			.catch(error => {
+				console.log('There has been a problem with your fetch operation: ' + error.message);
+				dispatch(logoutRequestFailed(error))
 			});
 	};
 }

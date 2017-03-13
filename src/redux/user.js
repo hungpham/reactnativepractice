@@ -5,6 +5,10 @@ export const SIGN_IN_REQUEST = 'SIGNIN/REQUESTING';
 export const SIGN_IN_SUCCESS = 'SIGNIN/SUCCESSED';
 export const SIGN_IN_FAILED = 'SIGNIN/FAILED';
 //=============================//
+export const SIGN_OUT_REQUEST = 'SIGNOUT/REQUESTING';
+export const SIGN_OUT_SUCCESS = 'SIGNOUT/SUCCESSED';
+export const SIGN_OUT_FAILED = 'SIGNOUT/FAILED';
+//=============================//
 export const SIGN_UP_REQUEST = 'SIGNUP/REQUESTING';
 export const SIGN_UP_SUCCESS = 'SIGNUP/SUCCESSED';
 export const SIGN_UP_FAILED = 'SIGNUP/FAILED';
@@ -32,6 +36,26 @@ export function loginRequestSuccess(json) {
 export function loginRequestFailed(error) {
 	return {
 		type: SIGN_IN_FAILED,
+		error: error.message
+	};
+}
+
+export function logoutRequest() {
+	return {
+		type: SIGN_OUT_REQUEST
+	};
+}
+
+export function logoutRequestSuccess(json) {
+	return {
+		type: SIGN_OUT_SUCCESS,
+		payload: json
+	};
+}
+
+export function logoutRequestFailed(error) {
+	return {
+		type: SIGN_OUT_FAILED,
 		error: error.message
 	};
 }
@@ -83,11 +107,19 @@ export function usersRequestFailed(error) {
 export const INITIAL_STATE = {
 	error: '',
 	loading: false
+	// ,user: {
+	// 	trainee_id: 3,
+	// 	full_name: "test",
+	// 	email: "test@gmail.com",
+	// 	birthday: "1986-01-20T00:00:00.000Z",
+	// 	token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InRyYWluZWVfaWQiOjMsImZ1bGxfbmFtZSI6InRlc3QiLCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiYmlydGhkYXkiOiIxOTg2LTAxLTIwVDAwOjAwOjAwLjAwMFoifSwiaWF0IjoxNDg5NDE5Mjg4LCJleHAiOjE0ODk0MjI4ODh9.PutN2HHQGJbGkc-pl7HxwrUkiNdJvHOQjqcmrP3_l-Q"
+	// }
 };
 
 export function userReducer(state = INITIAL_STATE, action) {
 	switch (action.type) {
 		case SIGN_IN_REQUEST:
+		case SIGN_OUT_REQUEST:
 		case SIGN_UP_REQUEST:
 		case USER_LIST_REQUEST:
 			return {
@@ -96,6 +128,7 @@ export function userReducer(state = INITIAL_STATE, action) {
 				error: ''
 			};
 		case SIGN_IN_FAILED:
+		case SIGN_OUT_FAILED:
 		case SIGN_UP_FAILED:
 		case USER_LIST_FAILED:
 			return {
@@ -104,6 +137,14 @@ export function userReducer(state = INITIAL_STATE, action) {
 				error: action.error
 			};
 		case SIGN_IN_SUCCESS:
+			return {
+				...state,
+				loading: false,
+				error: '',
+				user: action.payload
+			};
+
+		case SIGN_OUT_SUCCESS:
 			return {
 				...state,
 				loading: false,

@@ -31,7 +31,7 @@ export class User extends Component {
 	}
 
 	openDrawer() {
-		Actions.refresh({key: 'drawer', open: value => !value });
+		Actions.refresh({ key: 'drawer', open: value => !value });
 	}
 
 	render() {
@@ -39,6 +39,10 @@ export class User extends Component {
 			<Image
 				style={applicationStyles.splashScreen}
 				source={require('assets/images/bg_home-1.png')}>
+				<Button
+					onPress={this.openDrawer.bind(this)}
+					text="Open Menu User"
+				/>
 				<View style={applicationStyles.mainContent}>
 					<UserList style={styles.list} />
 				</View>

@@ -29,7 +29,7 @@ export class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fullName: '',
+      full_name: '',
       email: '',
       password: ''
     };
@@ -40,7 +40,7 @@ export class SignUp extends Component {
 
   handleSignUp() {
     this.props.signup({
-      fullName: this.state.fullName,
+      full_name: this.state.full_name,
       email: this.state.email,
       password: this.state.password
     });
@@ -81,8 +81,8 @@ export class SignUp extends Component {
         <View style={applicationStyles.halfHeight}>
           <CustomTextInput
             autoCapitalize={'none'}
-            onChangeText={(text) => this.setState({ fullName: text })}
-            placeholder={'Fullname'}
+            onChangeText={(text) => this.setState({ full_name: text })}
+            placeholder={'full_name'}
             imageIcon={require('assets/images/user_name.png')}
           />
           <CustomTextInput
